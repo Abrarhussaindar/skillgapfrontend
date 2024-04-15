@@ -10,7 +10,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>Which sector do you currently work in?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['EmployeeStatus']} required onChange={(e) => setUserData({ ...userData, "EmployeeStatus": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Government">Government</option>
                         <option value="Private">Private</option>
@@ -24,7 +24,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>What is your highest level of education completed?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['Education']} required onChange={(e) => setUserData({ ...userData, "Education": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Less than high school">Less than high school</option>
                         <option value="High school diploma">High school diploma</option>
@@ -38,7 +38,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>Which of the following best describes your occupation?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['Occupation']} required onChange={(e) => setUserData({ ...userData, "Occupation": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Administration/Management">Administration/Management</option>
                         <option value="Information Technology">Information Technology</option>
@@ -55,7 +55,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>How would you rate your current skill level in your field of work?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['CurrentSkillLevel']} required onChange={(e) => setUserData({ ...userData, "CurrentSkillLevel": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Beginner">Beginner</option>
                         <option value="Intermediate">Intermediate</option>
@@ -68,7 +68,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>Which skills do you believe are most crucial for your job role?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['CrucialSkill']} required onChange={(e) => setUserData({ ...userData, "CrucialSkill": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Communication">Communication</option>
                         <option value="Technical/IT skills">Technical/IT skills</option>
@@ -87,7 +87,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>How often do you participate in training or professional development activities to enhance your skills?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['PartiTrainProDev']} required onChange={(e) => setUserData({ ...userData, "PartiTrainProDev": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Never">Never</option>
                         <option value="Rarely">Rarely</option>
@@ -100,7 +100,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>Do you feel adequately prepared with the skills needed for your current job role?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['AdequatPrepared']} required onChange={(e) => setUserData({ ...userData, "AdequatPrepared": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -111,7 +111,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>If you answered "No" to the previous question, which specific skills do you feel are lacking or insufficient?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['SpecificSkills']} required onChange={(e) => setUserData({ ...userData, "SpecificSkills": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Communication">Communication</option>
                         <option value="Technical/IT skills">Technical/IT skills</option>
@@ -129,7 +129,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>Are there any barriers preventing you from acquiring the necessary skills for your job role?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['NecessaySkills']} required onChange={(e) => setUserData({ ...userData, "NecessaySkills": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Financial constraints">Financial constraints</option>
                         <option value="Time constraints due to job responsibilities">Time constraints due to job responsibilities</option>
@@ -143,7 +143,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>Do you think educational/training institutes are training as per current or emerging market demand/needs?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['EduTrainInstit']} required onChange={(e) => setUserData({ ...userData, "EduTrainInstit": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -155,7 +155,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>If “No” what are the necessary Changes/Updates/improvements you want to suggest/recommend in the system?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['SuggestionToSystem']} required onChange={(e) => setUserData({ ...userData, "SuggestionToSystem": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Industry Collaboration">GovernIndustry Collaborationment</option>
                         <option value="Regular Curriculum Review">Regular Curriculum Review</option>
@@ -184,7 +184,7 @@ function FirstForm() {
             <div className='indiDetails'>
                 <label>How do you believe the government or other institutions can better support skill development in Jammu and Kashmir UT?</label>
                 <div className="customSelect">
-                    <select value={userData['Division']} required onChange={(e) => setUserData({ ...userData, "Division": e.target.value })}>
+                    <select value={userData['GovSupportSkillDev']} required onChange={(e) => setUserData({ ...userData, "GovSupportSkillDev": e.target.value })}>
                         <option value="">Select Option</option>
                         <option value="Offering subsidized training programs">Offering subsidized training programs</option>
                         <option value="Providing scholarships or financial aid for education">Providing scholarships or financial aid for education</option>

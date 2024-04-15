@@ -376,6 +376,8 @@ function SpecificQuestions() {
                                 <span className="customArrow"></span>
                             </div>
                         </div>
+
+                        
                         <div className='indiDetails'>
                             <label>Are you aware of any government-sponsored skill development programs specifically targeted towards the agriculture and allied sectors in Jammu & Kashmir UT?</label>
                             <div className="customSelect">
@@ -934,7 +936,7 @@ function SpecificQuestions() {
                         <div className='indiDetails'>
                             <label>How important do you think soft skills (e.g., communication, teamwork, problem-solving) are in the construction, real estate, and allied sectors?</label>
                             <div className="customSelect">
-                                <select value={userData['Importance']} required onChange={(e) => setUserData({ ...userData, "Importance": e.target.value })}>
+                                <select value={userData['ImportanceSS']} required onChange={(e) => setUserData({ ...userData, "ImportanceSS": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Very important">Very important</option>
                                     <option value="Important">Important</option>
