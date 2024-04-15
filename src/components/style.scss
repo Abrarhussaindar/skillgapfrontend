@@ -515,3 +515,91 @@
         font-size: 16px;
     }
 }
+.TyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    gap: 20px;
+  }
+  .TyContainer header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .TyContainer header .logo {
+    width: 60px;
+  }
+  .TyContainer header h1 {
+    font-weight: 600;
+    color: #FE0000;
+    font-size: 28px;
+  }
+  .TyContainer header h1 .ar {
+    background-color: #FE0000;
+    color: white;
+    padding: 1px 7px;
+  }
+  .TyContainer header h1 .de {
+    border: 1px solid #FE0000;
+    padding: 0 7px;
+  }
+  .TyContainer header h4 {
+    font-size: 20px;
+    color: #FE0000;
+  }
+  .TyContainer header p {
+    font-size: 14px;
+  }
+  .TyContainer header .first {
+    font-weight: 500;
+  }
+  .TyContainer header .second {
+    text-decoration: underline;
+  }
+  .TyContainer .TyWrapper {
+    width: 90% !important;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    padding: 15px;
+    width: 50%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: unset;
+  }
+  .TyContainer .TyWrapper h1 {
+    color: #FE0000;
+  }
+  .TyContainer .TyWrapper p {
+    font-weight: 600;
+  }
+  .TyContainer .TyWrapper .TyMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .TyContainer .TyWrapper .TyMain .another {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: 1px solid;
+    outline: none;
+    background: white;
+    color: #FE0000;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  .TyContainer .TyWrapper .TyMain .another:hover {
+    background: #FE0000;
+    color: white;
+    border: 1px solid;
+  }
