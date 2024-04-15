@@ -26,21 +26,21 @@
 }
 .Container header h1 {
   font-weight: 600;
-  color: #FE0000;
+  color: #fe0000;
   font-size: 28px;
 }
 .Container header h1 .ar {
-  background-color: #FE0000;
+  background-color: #fe0000;
   color: white;
   padding: 1px 7px;
 }
 .Container header h1 .de {
-  border: 1px solid #FE0000;
+  border: 1px solid #fe0000;
   padding: 0 7px;
 }
 .Container header h4 {
   font-size: 20px;
-  color: #FE0000;
+  color: #fe0000;
 }
 .Container header p {
   font-size: 14px;
@@ -54,7 +54,7 @@
 .Container main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   width: 80%;
   padding: 15px;
   border-radius: 10px;
@@ -74,7 +74,233 @@
 .Container main form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+.Container main form .mainForm {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
+}
+.Container main form .mainForm .indiDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Container main form .mainForm .indiDetails label {
+  font-weight: 600;
+  font-size: 16px;
+}
+.Container main form .mainForm .indiDetails .message {
+  font-style: italic;
+  font-weight: 500;
+}
+.Container main form .mainForm .indiDetails input {
+  width: 80%;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: none;
+  font-size: 16px;
+  padding-left: 10px;
+  background-color: white;
+}
+.Container main form .mainForm .indiDetails select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: none;
+  font-size: 16px;
+  height: 40px;
+  background-color: white;
+  cursor: pointer;
+}
+.Container main form .mainForm .indiDetails .customSelect {
+  position: relative;
+  width: 100%;
+}
+.Container main form .mainForm .indiDetails .customSelect select {
+  width: 100%;
+  border: 1px solid #fe0000;
+  border-radius: 5px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.Container main form .mainForm .indiDetails .customSelect .customArrow {
+  position: absolute;
+  top: 0;
+  color: black;
+  right: 0;
+  height: 96%;
+  padding: 0 10px;
+  border: 1px solid #fe0000;
+  border-radius: 1px 5px 5px 1px;
+  pointer-events: none;
+  width: 20px;
+  background: white;
+}
+.Container main form .mainForm .indiDetails .customSelect .customArrow:hover {
+  background-color: #fe0000;
+}
+.Container main form .mainForm .indiDetails .customSelect .customArrow::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.Container main form .mainForm .indiDetails .customSelect .customArrow::before {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fe0000;
+}
+.Container main form .mainForm .indiDetails .customSelect .customArrow:hover::before {
+  border-top: 10px solid white;
+}
+.Container main form .topIndi,
+.Container main form .bottomIndi,
+.Container main form .lowerDetails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  row-gap: 20px;
+}
+.Container main form .topIndi .indiDetails,
+.Container main form .bottomIndi .indiDetails,
+.Container main form .lowerDetails .indiDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Container main form .topIndi .indiDetails label,
+.Container main form .bottomIndi .indiDetails label,
+.Container main form .lowerDetails .indiDetails label {
+  font-weight: 600;
+  font-size: 16px;
+}
+.Container main form .topIndi .indiDetails input,
+.Container main form .bottomIndi .indiDetails input,
+.Container main form .lowerDetails .indiDetails input {
+  width: 80%;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: none;
+  font-size: 16px;
+  padding-left: 10px;
+  background-color: white;
+}
+.Container main form .topIndi .indiDetails select,
+.Container main form .bottomIndi .indiDetails select,
+.Container main form .lowerDetails .indiDetails select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: none;
+  font-size: 16px;
+  height: 40px;
+  background-color: white;
+  cursor: pointer;
+}
+.Container main form .topIndi .indiDetails .customSelect,
+.Container main form .bottomIndi .indiDetails .customSelect,
+.Container main form .lowerDetails .indiDetails .customSelect {
+  position: relative;
+  width: 100%;
+}
+.Container main form .topIndi .indiDetails .customSelect select,
+.Container main form .bottomIndi .indiDetails .customSelect select,
+.Container main form .lowerDetails .indiDetails .customSelect select {
+  width: 100%;
+  border: 1px solid #fe0000;
+  border-radius: 5px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.Container main form .topIndi .indiDetails .customSelect .customArrow,
+.Container main form .bottomIndi .indiDetails .customSelect .customArrow,
+.Container main form .lowerDetails .indiDetails .customSelect .customArrow {
+  position: absolute;
+  top: 0;
+  color: black;
+  right: 0;
+  height: 96%;
+  padding: 0 10px;
+  border: 1px solid #fe0000;
+  border-radius: 1px 5px 5px 1px;
+  pointer-events: none;
+  width: 20px;
+  background: white;
+}
+.Container main form .topIndi .indiDetails .customSelect .customArrow:hover,
+.Container main form .bottomIndi .indiDetails .customSelect .customArrow:hover,
+.Container main form .lowerDetails .indiDetails .customSelect .customArrow:hover {
+  background-color: #fe0000;
+}
+.Container main form .topIndi .indiDetails .customSelect .customArrow::before,
+.Container main form .bottomIndi .indiDetails .customSelect .customArrow::before,
+.Container main form .lowerDetails .indiDetails .customSelect .customArrow::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.Container main form .topIndi .indiDetails .customSelect .customArrow::before,
+.Container main form .bottomIndi .indiDetails .customSelect .customArrow::before,
+.Container main form .lowerDetails .indiDetails .customSelect .customArrow::before {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fe0000;
+}
+.Container main form .topIndi .indiDetails .customSelect .customArrow:hover::before,
+.Container main form .bottomIndi .indiDetails .customSelect .customArrow:hover::before,
+.Container main form .lowerDetails .indiDetails .customSelect .customArrow:hover::before {
+  border-top: 10px solid white;
+}
+.Container main form .pin {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.Container main form .pin .indiDetails .innerDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Container main form .pin .indiDetails .innerDiv .pinInput {
+  width: 92% !important;
+}
+.Container main form .pin .indiDetails .innerDiv .innerInnerDiv {
+  display: flex;
+  flex-direction: column;
+}
+.Container main form .pin .indiDetails .innerDiv .innerInnerDiv .pincode {
+  width: 170px;
+}
+.Container main form .pin .indiDetails .areaDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Container main form .bet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.Container main form .bet .indiDetails input {
+  width: 92% !important;
 }
 .Container main form .indiDetails {
   display: flex;
@@ -95,6 +321,13 @@
   outline: none;
   font-size: 16px;
   padding-left: 10px;
+  background-color: white;
+}
+.Container main form .indiDetails .email {
+  width: 96% !important;
+  background-color: white;
+}
+.Container main form .indiDetails .dob {
   background-color: white;
 }
 .Container main form .indiDetails select {
@@ -153,6 +386,37 @@
 .Container main form .indiDetails .customSelect .customArrow:hover::before {
   border-top: 10px solid white;
 }
+.Container main form .indiDetails .sc {
+  width: 190px;
+}
+.Container main form .indiDetails .phoneNumber .phoneVal {
+  text-align: center;
+  -webkit-appearance: none;
+}
+.Container main form .indiDetails .other {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.Container main form .adhNumber {
+  display: grid;
+  grid-template-columns: repeat(4, 0.1fr);
+  gap: 15px;
+  align-items: center;
+  background-color: white;
+}
+.Container main form .adhNumber .adhInput {
+  text-align: center;
+  width: 50px !important;
+  height: 40px !important;
+  padding: 0 !important;
+}
+.Container main form .adhNumber .adhVal {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  -webkit-appearance: none;
+}
 .Container main form .btns {
   display: flex;
   gap: 10px;
@@ -164,7 +428,7 @@
   border: 1px solid;
   outline: none;
   background: white;
-  color: #FE0000;
+  color: #fe0000;
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
@@ -172,7 +436,7 @@
   transition: all 0.4s ease;
 }
 .Container main form .btns button:hover {
-  background: #FE0000;
+  background: #fe0000;
   color: white;
   border: 1px solid;
 }
@@ -190,6 +454,9 @@
     width: 90% !important;
     font-size: 14px;
   }
+  .Container main form .topIndi .indiDetails input, .Container main form .bottomIndi .indiDetails input, .Container main form .lowerDetails .indiDetails input {
+    width: 90%;
+  }
 }
 @media screen and (width <= 390px) {
   .Container .header h4 {
@@ -198,7 +465,8 @@
   .Container .header p {
     font-size: 12px;
   }
-  .Container main form .indiDetails label, select {
+  .Container main form .indiDetails label,
+  select {
     font-size: 14px;
   }
   .Container main form .btns button {
