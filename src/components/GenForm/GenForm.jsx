@@ -236,7 +236,7 @@ function GenForm() {
     };
 
     // calculateAge()
-    console.log(filteredAreas);
+    
     // const logo = require("../Decent Arcadia type 4.jpg");  
     // const arrow = require("../arrow-down-sign-to-navigate.png");
     // const user = require("./user.png");

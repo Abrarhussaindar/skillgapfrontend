@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import "../form.css"
+import "../style.css"
 import { multiStepContext } from '../../StepContext';
 
 function ThankYou() {
