@@ -81,6 +81,11 @@
   flex-direction: column;
   gap: 20px;
 }
+.Container main form .mainForm .topEd .top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .Container main form .mainForm .indiDetails {
   display: flex;
   flex-direction: column;

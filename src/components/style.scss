@@ -85,6 +85,13 @@
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                .topEd{
+                    .top{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
                 .indiDetails {
                     display: flex;
                     flex-direction: column;
