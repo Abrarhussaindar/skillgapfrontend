@@ -88,7 +88,7 @@ function Form() {
                         currentStep === 4
                             ? ""
                             : <h4>
-                                {currentStep} / 4
+                                {currentStep} / 3
                             </h4>
                     }
 

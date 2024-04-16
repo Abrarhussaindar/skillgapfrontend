@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import App from './App';
-// import axios from 'axios';
+
 
 export const multiStepContext = React.createContext();
 const StepContext = () => {
 
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState(3);
     const [userData, setUserData] = useState([]);
     const [finalData, setFinalData] = useState([]);
 

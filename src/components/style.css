@@ -86,6 +86,42 @@
   flex-direction: column;
   gap: 10px;
 }
+.Container main form .mainForm .indiDetails .checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Container main form .mainForm .indiDetails .checkbox .checkboxContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.Container main form .mainForm .indiDetails .checkbox .checkboxContent label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Container main form .mainForm .indiDetails .checkbox .checkboxContent label .check {
+  display: flex;
+  gap: 10px;
+}
+.Container main form .mainForm .indiDetails .checkbox .checkboxContent label .radioBtns {
+  display: flex;
+  justify-content: space-between;
+}
+.Container main form .mainForm .indiDetails .checkbox .checkboxContent label .radioBtns div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.Container main form .mainForm .indiDetails .checkbox .checkboxContent label .radioBtns div span {
+  font-weight: 400;
+}
+.Container main form .mainForm .indiDetails .checkbox .checkboxContent label input {
+  width: 20px;
+  height: 15px;
+}
 .Container main form .mainForm .indiDetails label {
   font-weight: 600;
   font-size: 16px;

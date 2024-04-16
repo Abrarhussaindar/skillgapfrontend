@@ -265,7 +265,7 @@ function GenForm() {
                             <hr />
                             <option value="Female">Female</option>
                             <hr />
-                            <option value="Transgender">Transgender</option>
+                            <option value="Other">Other</option>
 
                         </select>
                         <span className="customArrow"></span>

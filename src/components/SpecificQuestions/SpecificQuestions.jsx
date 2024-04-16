@@ -1,9 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import "../style.css"
 import { multiStepContext } from '../../StepContext';
 
 function SpecificQuestions() {
     const { userData, setUserData } = useContext(multiStepContext);
+    const [selectedOptions, setSelectedOptions] = useState({});
+    console.log("so: ", selectedOptions)
+    const handleCheckboxChange = (option, rating) => {
+        setSelectedOptions(prevState => ({
+            ...prevState,
+            [option]: rating // Update the selected option with the provided rating
+        }));
+    };
+    function getRatingDescription(rating) {
+        switch (rating) {
+            case 1:
+                return 'Poor';
+            case 2:
+                return 'Fair';
+            case 3:
+                return 'Average';
+            case 4:
+                return 'Good';
+            case 5:
+                return 'Excellent';
+            default:
+                return '';
+        }
+    }
     return (
 
 
@@ -67,7 +91,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the tourism sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Customer Service">Customer Service</option>
@@ -79,6 +103,216 @@ function SpecificQuestions() {
                                     <option value="Technical Skills">Technical Skills (Please specify)</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Customer Service"
+                                                checked={selectedOptions['Customer Service'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Customer Service', undefined)}
+                                            />
+                                            Customer Service:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="customerServiceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Customer Service'] === rating}
+                                                        onChange={() => handleCheckboxChange('Customer Service', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Communication (Verbal and Written)"
+                                                checked={selectedOptions['Communication (Verbal and Written)'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Communication (Verbal and Written)', undefined)}
+                                            />
+                                            Communication (Verbal and Written):
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="Communication(Verbal and Written)Rating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Communication (Verbal and Written)'] === rating}
+                                                        onChange={() => handleCheckboxChange('Communication (Verbal and Written)', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Cultural Awareness/Sensitivity"
+                                                checked={selectedOptions['Cultural Awareness/Sensitivity'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Cultural Awareness/Sensitivity', undefined)}
+                                            />
+                                            Cultural Awareness/Sensitivity:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CulturalAwareness/SensitivityRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Cultural Awareness/Sensitivity'] === rating}
+                                                        onChange={() => handleCheckboxChange('Cultural Awareness/Sensitivity', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Problem-Solving"
+                                                checked={selectedOptions['Problem-Solving'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Problem-Solving', undefined)}
+                                            />
+                                            Problem-Solving:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="ProblemSolvingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Problem-Solving'] === rating}
+                                                        onChange={() => handleCheckboxChange('Problem-Solving', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Teamwork/Collaboration"
+                                                checked={selectedOptions['Teamwork/Collaboration'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Teamwork/Collaboration', undefined)}
+                                            />
+                                            Teamwork/Collaboration:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TeamworkCollaborationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Teamwork/Collaboration'] === rating}
+                                                        onChange={() => handleCheckboxChange('Teamwork/Collaboration', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Leadership/Management"
+                                                checked={selectedOptions['Leadership/Management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Leadership/Management', undefined)}
+                                            />
+                                            Leadership/Management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="LeadershipManagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Leadership/Management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Leadership/Management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Technical Skills"
+                                                checked={selectedOptions['Technical Skills'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Technical Skills', undefined)}
+                                            />
+                                            Technical Skills:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TechnicalSkillsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Technical Skills'] === rating}
+                                                        onChange={() => handleCheckboxChange('Technical Skills', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -377,7 +611,7 @@ function SpecificQuestions() {
                             </div>
                         </div>
 
-                        
+
                         <div className='indiDetails'>
                             <label>Are you aware of any government-sponsored skill development programs specifically targeted towards the agriculture and allied sectors in Jammu & Kashmir UT?</label>
                             <div className="customSelect">
@@ -890,7 +1124,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label className='message'>Your participation and insights are crucial in identifying and addressing skill gaps within the construction, real estate, and allied sectors of Jammu & Kashmir UT. Thank you for your valuable input.</label>
-                            
+
                         </div>
                         <div className='indiDetails'>
                             <label>Do you believe there is a need for specialized training programs focusing on sustainable construction practices (e.g., green building, energy efficiency, waste management) in Jammu & Kashmir UT?</label>
@@ -973,7 +1207,7 @@ function SpecificQuestions() {
                             <label>What initiatives do you think can be implemented to encourage more women to pursue careers in the construction, real estate, and allied sectors in Jammu & Kashmir UT?</label>
                             <input type='text' value={userData['Initiatives']} required onChange={(e) => setUserData({ ...userData, "Initiatives": e.target.value })} />
                         </div>
-                        
+
                         <div className='indiDetails'>
                             <label>How do you envision the future of skill development in the construction, real estate, and allied sectors of Jammu & Kashmir UT, and what steps do you think should be taken to ensure a skilled workforce for the future?</label>
                             <input type='text' value={userData['EnvisionFSD']} required onChange={(e) => setUserData({ ...userData, "EnvisionFSD": e.target.value })} />
@@ -1034,7 +1268,7 @@ function SpecificQuestions() {
                                     <option value="Data analysis">Data analysis</option>
                                     <option value="Team management">Team management</option>
                                     <option value="Marketing strategies">Marketing strategies</option>
-                                    
+
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
@@ -1189,7 +1423,7 @@ function SpecificQuestions() {
                             <label>How do you think the adoption of Industry 4.0 technologies (such as automation, Internet of Things, and artificial intelligence) can impact skill requirements in the manufacturing sector of Jammu & Kashmir UT?</label>
                             <input type='text' value={userData['AdoptionIT']} required onChange={(e) => setUserData({ ...userData, "AdoptionIT": e.target.value })} />
                         </div>
-                        
+
                         <div className='indiDetails'>
                             <label>Are there any cultural or social factors that influence participation in skill development programs within the retail and manufacturing sectors? If yes, please elaborate.</label>
                             <input type='text' value={userData['CultSocailFactors']} required onChange={(e) => setUserData({ ...userData, "CultSocailFactors": e.target.value })} />
@@ -1271,7 +1505,7 @@ function SpecificQuestions() {
                                     <option value="Insurance product development">Insurance product development</option>
                                     <option value="Financial technology applications">Financial technology applications</option>
                                     <option value="Data analysis and interpretation">Data analysis and interpretation</option>
-                                    
+
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
@@ -1628,7 +1862,7 @@ function SpecificQuestions() {
                                     <option value="Financial management">Financial management</option>
                                     <option value="Trade regulations and compliance">Trade regulations and compliance</option>
                                     <option value="International business operations">International business operations</option>
-                                    
+
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
