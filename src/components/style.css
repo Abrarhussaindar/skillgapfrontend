@@ -103,6 +103,7 @@
 }
 .Container main form .mainForm .indiDetails .checkbox .checkboxContent label .check {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 .Container main form .mainForm .indiDetails .checkbox .checkboxContent label .radioBtns {

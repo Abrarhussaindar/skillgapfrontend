@@ -5,11 +5,22 @@ import { multiStepContext } from '../../StepContext';
 function SpecificQuestions() {
     const { userData, setUserData } = useContext(multiStepContext);
     const [selectedOptions, setSelectedOptions] = useState({});
-    console.log("so: ", selectedOptions)
+    // console.log("so: ", selectedOptions)
     const handleCheckboxChange = (option, rating) => {
-        setSelectedOptions(prevState => ({
-            ...prevState,
-            [option]: rating // Update the selected option with the provided rating
+        setSelectedOptions(prevState => {
+            const updatedOptions = {
+                ...prevState,
+                [option]: rating
+            };
+            setScale(updatedOptions);
+            return updatedOptions;
+        });
+    };
+
+    const setScale = (updatedOptions) => {
+        setUserData(prevUserData => ({
+            ...prevUserData,
+            "Scale": updatedOptions
         }));
     };
     function getRatingDescription(rating) {
@@ -75,7 +86,7 @@ function SpecificQuestions() {
 
                         <div className='indiDetails'>
                             <label>Which specific area(s) of the tourism sector are you involved in?</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['SpecificArea']} required onChange={(e) => setUserData({ ...userData, "SpecificArea": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Hospitality (Hotels, Restaurants, etc.)">Hospitality (Hotels, Restaurants, etc.)</option>
@@ -87,23 +98,11 @@ function SpecificQuestions() {
                                     <option value="Others">Others (please specify)</option>
                                 </select>
                                 <span className="customArrow"></span>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the tourism sector? (1 being lowest, 5 being highest)</label>
-                            {/* <div className="customSelect">
-                                <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
-                                    <option value="">Select Option</option>
-                                    <option value="Customer Service">Customer Service</option>
-                                    <option value="Communication (Verbal and Written)">Communication (Verbal and Written)</option>
-                                    <option value="Cultural Awareness/Sensitivity">Cultural Awareness/Sensitivity</option>
-                                    <option value="Problem-Solving">Problem-Solving</option>
-                                    <option value="Teamwork/Collaboration">Teamwork/Collaboration</option>
-                                    <option value="Leadership/Management">Leadership/Management</option>
-                                    <option value="Technical Skills">Technical Skills (Please specify)</option>
-                                </select>
-                                <span className="customArrow"></span>
-                            </div> */}
+
                             <div className='checkbox'>
                                 <h3>Select options:</h3>
                                 <div className='checkboxContent'>
@@ -476,7 +475,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to agriculture or allied sectors? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Crop management techniques">Crop management techniques</option>
@@ -491,6 +490,272 @@ function SpecificQuestions() {
                                     <option value="Others">Others (please specify)</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Crop management techniques"
+                                                checked={selectedOptions['Crop management techniques'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Crop management techniques', undefined)}
+                                            />
+                                            Crop management techniques:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="CropmanagementtechniquesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Crop management techniques'] === rating}
+                                                        onChange={() => handleCheckboxChange('Crop management techniques', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Livestock management"
+                                                checked={selectedOptions['Livestock management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Livestock management', undefined)}
+                                            />
+                                            Livestock management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="LivestockmanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Livestock management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Livestock management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Soil conservation and management"
+                                                checked={selectedOptions['Soil conservation and management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Soil conservation and management', undefined)}
+                                            />
+                                            Soil conservation and management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="SoilconservationandmanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Soil conservation and management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Soil conservation and management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Pest and disease management"
+                                                checked={selectedOptions['Pest and disease management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Pest and disease management', undefined)}
+                                            />
+                                            Pest and disease management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="PestanddiseasemanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Pest and disease management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Pest and disease management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Irrigation techniques"
+                                                checked={selectedOptions['Irrigation techniques'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Irrigation techniques', undefined)}
+                                            />
+                                            Irrigation techniques:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="IrrigationtechniquesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Irrigation techniques'] === rating}
+                                                        onChange={() => handleCheckboxChange('Irrigation techniques', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Agro-processing techniques"
+                                                checked={selectedOptions['Agro-processing techniques'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Agro-processing techniques', undefined)}
+                                            />
+                                            Agro-processing techniques:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="Agro-processingtechniquesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Agro-processing techniques'] === rating}
+                                                        onChange={() => handleCheckboxChange('Agro-processing techniques', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Marketing and sales strategies"
+                                                checked={selectedOptions['Marketing and sales strategies'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Marketing and sales strategies', undefined)}
+                                            />
+                                            Marketing and sales strategies:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="MarketingandsalesstrategiesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Marketing and sales strategies'] === rating}
+                                                        onChange={() => handleCheckboxChange('Marketing and sales strategies', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Technology adoption and farm mechanization"
+                                                checked={selectedOptions['Technology adoption and farm mechanization'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Technology adoption and farm mechanization', undefined)}
+                                            />
+                                            Technology adoption and farm mechanization:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TechnologyadoptionandfarmmechanizationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Technology adoption and farm mechanization'] === rating}
+                                                        onChange={() => handleCheckboxChange('Technology adoption and farm mechanization', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Financial management and budgeting"
+                                                checked={selectedOptions['Financial management and budgeting'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Financial management and budgeting', undefined)}
+                                            />
+                                            Financial management and budgeting:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="FinancialmanagementandbudgetingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Financial management and budgeting'] === rating}
+                                                        onChange={() => handleCheckboxChange('Financial management and budgeting', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -739,7 +1004,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to handicraft or allied sectors? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Traditional craftsmanship techniques">Traditional craftsmanship techniques</option>
@@ -751,6 +1016,216 @@ function SpecificQuestions() {
                                     <option value="Innovation and adaptation to changing trends">Innovation and adaptation to changing trends</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Traditional craftsmanship techniques"
+                                                checked={selectedOptions['Traditional craftsmanship techniques'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Traditional craftsmanship techniques', undefined)}
+                                            />
+                                            Traditional craftsmanship techniques:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="TraditionalcraftsmanshiptechniquesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Traditional craftsmanship techniques'] === rating}
+                                                        onChange={() => handleCheckboxChange('Traditional craftsmanship techniques', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Design and creativity"
+                                                checked={selectedOptions['Design and creativity'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Design and creativity', undefined)}
+                                            />
+                                            Design and creativity:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="DesignandcreativityRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Design and creativity'] === rating}
+                                                        onChange={() => handleCheckboxChange('Design and creativity', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Material selection and sourcing"
+                                                checked={selectedOptions['Material selection and sourcing'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Material selection and sourcing', undefined)}
+                                            />
+                                            Material selection and sourcing:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="MaterialselectionandsourcingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Material selection and sourcing'] === rating}
+                                                        onChange={() => handleCheckboxChange('Material selection and sourcing', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Quality control and finishing"
+                                                checked={selectedOptions['Quality control and finishing'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Quality control and finishing', undefined)}
+                                            />
+                                            Quality control and finishing:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="QualitycontrolandfinishingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Quality control and finishing'] === rating}
+                                                        onChange={() => handleCheckboxChange('Quality control and finishing', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Marketing and sales strategies"
+                                                checked={selectedOptions['Marketing and sales strategies'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Marketing and sales strategies', undefined)}
+                                            />
+                                            Marketing and sales strategies:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="MarketingandsalesstrategiesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Marketing and sales strategies'] === rating}
+                                                        onChange={() => handleCheckboxChange('Marketing and sales strategies', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Business management skills"
+                                                checked={selectedOptions['Business management skills'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Business management skills', undefined)}
+                                            />
+                                            Business management skills:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="BusinessmanagementskillsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Business management skills'] === rating}
+                                                        onChange={() => handleCheckboxChange('Business management skills', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Innovation and adaptation to changing trends"
+                                                checked={selectedOptions['Innovation and adaptation to changing trends'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Innovation and adaptation to changing trends', undefined)}
+                                            />
+                                            Innovation and adaptation to changing trends:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InnovationandadaptationtochangingtrendsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Innovation and adaptation to changing trends'] === rating}
+                                                        onChange={() => handleCheckboxChange('Innovation and adaptation to changing trends', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -989,7 +1464,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to construction, real estate, or allied sectors? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Technical construction skills">Technical construction skills</option>
@@ -1002,6 +1477,246 @@ function SpecificQuestions() {
                                     <option value="Occupational health and safety">Occupational health and safety</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Technical construction skills"
+                                                checked={selectedOptions['Technical construction skills'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Technical construction skills', undefined)}
+                                            />
+                                            Technical construction skills:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="TechnicalconstructionskillsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Technical construction skills'] === rating}
+                                                        onChange={() => handleCheckboxChange('Technical construction skills', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Project management"
+                                                checked={selectedOptions['Project management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Project management', undefined)}
+                                            />
+                                            Project management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="Communication(Verbal and Written)Rating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Project management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Project management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Budgeting and cost estimation"
+                                                checked={selectedOptions['Budgeting and cost estimation'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Budgeting and cost estimation', undefined)}
+                                            />
+                                            Budgeting and cost estimation:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="BudgetingandcostestimationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Budgeting and cost estimation'] === rating}
+                                                        onChange={() => handleCheckboxChange('Budgeting and cost estimation', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Building codes and regulations compliance"
+                                                checked={selectedOptions['Building codes and regulations compliance'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Building codes and regulations compliance', undefined)}
+                                            />
+                                            Building codes and regulations compliance:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="BuildingcodesandregulationscomplianceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Building codes and regulations compliance'] === rating}
+                                                        onChange={() => handleCheckboxChange('Building codes and regulations compliance', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Market analysis and property valuation"
+                                                checked={selectedOptions['Market analysis and property valuation'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Market analysis and property valuation', undefined)}
+                                            />
+                                            Market analysis and property valuation:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="MarketanalysisandpropertyvaluationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Market analysis and property valuation'] === rating}
+                                                        onChange={() => handleCheckboxChange('Market analysis and property valuation', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Negotiation and sales skills"
+                                                checked={selectedOptions['Negotiation and sales skills'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Negotiation and sales skills', undefined)}
+                                            />
+                                            Negotiation and sales skills:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="NegotiationandsalesskillsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Negotiation and sales skills'] === rating}
+                                                        onChange={() => handleCheckboxChange('Negotiation and sales skills', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Sustainable construction practices"
+                                                checked={selectedOptions['Sustainable construction practices'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Sustainable construction practices', undefined)}
+                                            />
+                                            Sustainable construction practices:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="SustainableconstructionpracticesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Sustainable construction practices'] === rating}
+                                                        onChange={() => handleCheckboxChange('Sustainable construction practices', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Occupational health and safety"
+                                                checked={selectedOptions['Occupational health and safety'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Occupational health and safety', undefined)}
+                                            />
+                                            Occupational health and safety:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="OccupationalhealthandsafetyRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Occupational health and safety'] === rating}
+                                                        onChange={() => handleCheckboxChange('Occupational health and safety', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -1257,7 +1972,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to retail or manufacturing sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Customer service">Customer service</option>
@@ -1271,6 +1986,244 @@ function SpecificQuestions() {
 
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Customer Service"
+                                                checked={selectedOptions['Customer Service'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Customer Service', undefined)}
+                                            />
+                                            Customer Service:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="customerServiceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Customer Service'] === rating}
+                                                        onChange={() => handleCheckboxChange('Customer Service', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Sales techniques"
+                                                checked={selectedOptions['Sales techniques'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Sales techniques', undefined)}
+                                            />
+                                            Sales techniques:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="SalestechniquesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Sales techniques'] === rating}
+                                                        onChange={() => handleCheckboxChange('Sales techniques', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Inventory management"
+                                                checked={selectedOptions['Inventory management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Inventory management', undefined)}
+                                            />
+                                            Inventory management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InventorymanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Inventory management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Inventory management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Production planning"
+                                                checked={selectedOptions['Production planning'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Production planning', undefined)}
+                                            />
+                                            Production planning:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="ProductionplanningRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Production planning'] === rating}
+                                                        onChange={() => handleCheckboxChange('Production planning', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Quality assurance"
+                                                checked={selectedOptions['Quality assurance'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Quality assurance', undefined)}
+                                            />
+                                            Quality assurance:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="QualityassuranceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Quality assurance'] === rating}
+                                                        onChange={() => handleCheckboxChange('Quality assurance', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Data analysis"
+                                                checked={selectedOptions['Data analysis'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Data analysis', undefined)}
+                                            />
+                                            Data analysis:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="DataanalysisRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Data analysis'] === rating}
+                                                        onChange={() => handleCheckboxChange('Data analysis', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Team management"
+                                                checked={selectedOptions['Team management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Team management', undefined)}
+                                            />
+                                            Team management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TeammanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Team management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Team management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Marketing strategies"
+                                                checked={selectedOptions['Marketing strategies'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Marketing strategies', undefined)}
+                                            />
+                                            Marketing strategies:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="MarketingstrategiesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Marketing strategies'] === rating}
+                                                        onChange={() => handleCheckboxChange('Marketing strategies', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -1494,7 +2447,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the banking, finance, or insurance sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Financial analysis and modeling">Financial analysis and modeling</option>
@@ -1508,6 +2461,244 @@ function SpecificQuestions() {
 
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Financial analysis and modeling"
+                                                checked={selectedOptions['Financial analysis and modeling'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Financial analysis and modeling', undefined)}
+                                            />
+                                            Financial analysis and modeling:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="FinancialanalysisandmodelingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Financial analysis and modeling'] === rating}
+                                                        onChange={() => handleCheckboxChange('Financial analysis and modeling', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Risk assessment and management"
+                                                checked={selectedOptions['Risk assessment and management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Risk assessment and management', undefined)}
+                                            />
+                                            Risk assessment and management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="RiskassessmentandmanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Risk assessment and management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Risk assessment and management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Customer relationship management"
+                                                checked={selectedOptions['Customer relationship management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Customer relationship management', undefined)}
+                                            />
+                                            Customer relationship management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CustomerrelationshipmanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Customer relationship management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Customer relationship management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Regulatory compliance"
+                                                checked={selectedOptions['Regulatory compliance'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Regulatory compliance', undefined)}
+                                            />
+                                            Regulatory compliance:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="RegulatorycomplianceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Regulatory compliance'] === rating}
+                                                        onChange={() => handleCheckboxChange('Regulatory compliance', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Investment portfolio management"
+                                                checked={selectedOptions['Investment portfolio management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Investment portfolio management', undefined)}
+                                            />
+                                            Investment portfolio management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InvestmentportfoliomanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Investment portfolio management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Investment portfolio management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Insurance product development"
+                                                checked={selectedOptions['Insurance product development'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Insurance product development', undefined)}
+                                            />
+                                            Insurance product development:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InsuranceproductdevelopmentRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Insurance product development'] === rating}
+                                                        onChange={() => handleCheckboxChange('Insurance product development', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Financial technology applications"
+                                                checked={selectedOptions['Financial technology applications'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Financial technology applications', undefined)}
+                                            />
+                                            Financial technology applications:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="FinancialtechnologyapplicationsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Financial technology applications'] === rating}
+                                                        onChange={() => handleCheckboxChange('Financial technology applications', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Data analysis and interpretation"
+                                                checked={selectedOptions['Data analysis and interpretation'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Data analysis and interpretation', undefined)}
+                                            />
+                                            Data analysis and interpretation:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="DataanalysisandinterpretationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Data analysis and interpretation'] === rating}
+                                                        onChange={() => handleCheckboxChange('Data analysis and interpretation', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -1673,7 +2864,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the IT or allied sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Programming languages (e.g., Java, Python, C++)">Programming languages (e.g., Java, Python, C++)</option>
@@ -1687,6 +2878,272 @@ function SpecificQuestions() {
                                     <option value="Project management methodologies">Project management methodologies</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Programming languages (e.g., Java, Python, C++)"
+                                                checked={selectedOptions['Programming languages (e.g., Java, Python, C++)'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Programming languages (e.g., Java, Python, C++)', undefined)}
+                                            />
+                                            Programming languages (e.g., Java, Python, C++):
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="ProgramminglanguagesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Programming languages (e.g., Java, Python, C++)'] === rating}
+                                                        onChange={() => handleCheckboxChange('Programming languages (e.g., Java, Python, C++)', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Web development frameworks (e.g., React, Angular, Django)"
+                                                checked={selectedOptions['Web development frameworks (e.g., React, Angular, Django)'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Web development frameworks (e.g., React, Angular, Django)', undefined)}
+                                            />
+                                            Web development frameworks (e.g., React, Angular, Django):
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="WebdevelopmentframeworksRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Web development frameworks (e.g., React, Angular, Django)'] === rating}
+                                                        onChange={() => handleCheckboxChange('Web development frameworks (e.g., React, Angular, Django)', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Cybersecurity tools and techniques"
+                                                checked={selectedOptions['Cybersecurity tools and techniques'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Cybersecurity tools and techniques', undefined)}
+                                            />
+                                            Cybersecurity tools and techniques:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CybersecuritytoolsandtechniquesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Cybersecurity tools and techniques'] === rating}
+                                                        onChange={() => handleCheckboxChange('Cybersecurity tools and techniques', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Problem-Solving"
+                                                checked={selectedOptions['Data analysis and visualization'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Data analysis and visualization', undefined)}
+                                            />
+                                            Data analysis and visualization:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="DataanalysisandvisualizationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Data analysis and visualization'] === rating}
+                                                        onChange={() => handleCheckboxChange('Data analysis and visualization', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Network administration and troubleshooting"
+                                                checked={selectedOptions['Network administration and troubleshooting'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Network administration and troubleshooting', undefined)}
+                                            />
+                                            Network administration and troubleshooting:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="NetworkadministrationandtroubleshootingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Network administration and troubleshooting'] === rating}
+                                                        onChange={() => handleCheckboxChange('Network administration and troubleshooting', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Cloud platforms (e.g., AWS, Azure, Google Cloud)"
+                                                checked={selectedOptions['Cloud platforms (e.g., AWS, Azure, Google Cloud)'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Cloud platforms (e.g., AWS, Azure, Google Cloud)', undefined)}
+                                            />
+                                            Cloud platforms (e.g., AWS, Azure, Google Cloud):
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CloudplatformsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Cloud platforms (e.g., AWS, Azure, Google Cloud)'] === rating}
+                                                        onChange={() => handleCheckboxChange('Cloud platforms (e.g., AWS, Azure, Google Cloud)', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="AI and ML algorithms and applications"
+                                                checked={selectedOptions['AI and ML algorithms and applications'] !== undefined}
+                                                onChange={() => handleCheckboxChange('AI and ML algorithms and applications', undefined)}
+                                            />
+                                            AI and ML algorithms and applications:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="AIandMLalgorithmsandapplicationsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['AI and ML algorithms and applications'] === rating}
+                                                        onChange={() => handleCheckboxChange('AI and ML algorithms and applications', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Digital marketing strategies"
+                                                checked={selectedOptions['Digital marketing strategies'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Digital marketing strategies', undefined)}
+                                            />
+                                            Digital marketing strategies:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="DigitalmarketingstrategiesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Digital marketing strategies'] === rating}
+                                                        onChange={() => handleCheckboxChange('Digital marketing strategies', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Project management methodologies"
+                                                checked={selectedOptions['Project management methodologies'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Project management methodologies', undefined)}
+                                            />
+                                            Project management methodologies:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="ProjectmanagementmethodologiesRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Project management methodologies'] === rating}
+                                                        onChange={() => handleCheckboxChange('Project management methodologies', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -1851,7 +3308,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the trade or commerce sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Market analysis and research">Market analysis and research</option>
@@ -1865,6 +3322,244 @@ function SpecificQuestions() {
 
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Market analysis and research"
+                                                checked={selectedOptions['Market analysis and research'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Market analysis and research', undefined)}
+                                            />
+                                            Market analysis and research:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="MarketanalysisandresearchRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Market analysis and research'] === rating}
+                                                        onChange={() => handleCheckboxChange('Market analysis and research', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Negotiation and bargaining"
+                                                checked={selectedOptions['Negotiation and bargaining'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Negotiation and bargaining', undefined)}
+                                            />
+                                            Negotiation and bargaining:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="NegotiationandbargainingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Negotiation and bargaining'] === rating}
+                                                        onChange={() => handleCheckboxChange('Negotiation and bargaining', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Inventory management"
+                                                checked={selectedOptions['Inventory management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Inventory management', undefined)}
+                                            />
+                                            Inventory management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InventorymanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Inventory management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Inventory management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Customer relationship management"
+                                                checked={selectedOptions['Customer relationship management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Customer relationship management', undefined)}
+                                            />
+                                            Customer relationship management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CustomerrelationshipmanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Customer relationship management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Customer relationship management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Supply chain optimization"
+                                                checked={selectedOptions['Supply chain optimization'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Supply chain optimization', undefined)}
+                                            />
+                                            Supply chain optimization:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="SupplychainoptimizationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Supply chain optimization'] === rating}
+                                                        onChange={() => handleCheckboxChange('Supply chain optimization', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Financial management"
+                                                checked={selectedOptions['Financial management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Financial management', undefined)}
+                                            />
+                                            Financial management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="FinancialmanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Financial management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Financial management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Trade regulations and compliance"
+                                                checked={selectedOptions['Trade regulations and compliance'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Trade regulations and compliance', undefined)}
+                                            />
+                                            Trade regulations and compliance:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TraderegulationsandcomplianceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Trade regulations and compliance'] === rating}
+                                                        onChange={() => handleCheckboxChange('Trade regulations and compliance', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="International business operations"
+                                                checked={selectedOptions['International business operations'] !== undefined}
+                                                onChange={() => handleCheckboxChange('International business operations', undefined)}
+                                            />
+                                            International business operations:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InternationalbusinessoperationsRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['International business operations'] === rating}
+                                                        onChange={() => handleCheckboxChange('International business operations', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -2030,7 +3725,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the training or education sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Lesson planning and delivery">Lesson planning and delivery</option>
@@ -2043,6 +3738,244 @@ function SpecificQuestions() {
                                     <option value="Cultural sensitivity and inclusivity">Cultural sensitivity and inclusivity</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Lesson planning and delivery"
+                                                checked={selectedOptions['Lesson planning and delivery'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Lesson planning and delivery', undefined)}
+                                            />
+                                            Lesson planning and delivery:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="LessonplanninganddeliveryRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Lesson planning and delivery'] === rating}
+                                                        onChange={() => handleCheckboxChange('Lesson planning and delivery', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Curriculum design and development"
+                                                checked={selectedOptions['Curriculum design and development'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Curriculum design and development', undefined)}
+                                            />
+                                            Curriculum design and development:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CurriculumdesignanddevelopmentRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Curriculum design and development'] === rating}
+                                                        onChange={() => handleCheckboxChange('Curriculum design and development', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Classroom management"
+                                                checked={selectedOptions['Classroom management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Classroom management', undefined)}
+                                            />
+                                            Classroom management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="ClassroommanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Classroom management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Classroom management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Educational assessment and evaluation"
+                                                checked={selectedOptions['Educational assessment and evaluation'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Educational assessment and evaluation', undefined)}
+                                            />
+                                            Educational assessment and evaluation:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="EducationalassessmentandevaluationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Educational assessment and evaluation'] === rating}
+                                                        onChange={() => handleCheckboxChange('Educational assessment and evaluation', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Technology integration in teaching"
+                                                checked={selectedOptions['Technology integration in teaching'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Technology integration in teaching', undefined)}
+                                            />
+                                            Technology integration in teaching:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TechnologyintegrationinteachingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Technology integration in teaching'] === rating}
+                                                        onChange={() => handleCheckboxChange('Technology integration in teaching', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Training needs analysis"
+                                                checked={selectedOptions['Training needs analysis'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Training needs analysis', undefined)}
+                                            />
+                                            Training needs analysis:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TrainingneedsanalysisRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Training needs analysis'] === rating}
+                                                        onChange={() => handleCheckboxChange('Training needs analysis', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Program evaluation and improvement"
+                                                checked={selectedOptions['Program evaluation and improvement'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Program evaluation and improvement', undefined)}
+                                            />
+                                            Program evaluation and improvement:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="ProgramevaluationandimprovementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Program evaluation and improvement'] === rating}
+                                                        onChange={() => handleCheckboxChange('Program evaluation and improvement', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Cultural sensitivity and inclusivity"
+                                                checked={selectedOptions['Cultural sensitivity and inclusivity'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Cultural sensitivity and inclusivity', undefined)}
+                                            />
+                                            Cultural sensitivity and inclusivity:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CulturalsensitivityandinclusivityRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Cultural sensitivity and inclusivity'] === rating}
+                                                        onChange={() => handleCheckboxChange('Cultural sensitivity and inclusivity', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -2207,7 +4140,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the transport or logistics sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Route planning and navigation">Route planning and navigation</option>
@@ -2220,6 +4153,244 @@ function SpecificQuestions() {
                                     <option value="Customer service">Customer service</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Route planning and navigation"
+                                                checked={selectedOptions['Route planning and navigation'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Route planning and navigation', undefined)}
+                                            />
+                                            Route planning and navigation:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="RouteplanningandnavigationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Route planning and navigation'] === rating}
+                                                        onChange={() => handleCheckboxChange('Route planning and navigation', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Load optimization and cargo handling"
+                                                checked={selectedOptions['Load optimization and cargo handling'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Load optimization and cargo handling', undefined)}
+                                            />
+                                            Load optimization and cargo handling:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="LoadoptimizationandcargohandlingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Load optimization and cargo handling'] === rating}
+                                                        onChange={() => handleCheckboxChange('Load optimization and cargo handling', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Time management and scheduling"
+                                                checked={selectedOptions['Time management and scheduling'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Time management and scheduling', undefined)}
+                                            />
+                                            Time management and scheduling:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="TimemanagementandschedulingRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Time management and scheduling'] === rating}
+                                                        onChange={() => handleCheckboxChange('Time management and scheduling', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Vehicle maintenance and repair"
+                                                checked={selectedOptions['Vehicle maintenance and repair'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Vehicle maintenance and repair', undefined)}
+                                            />
+                                            Vehicle maintenance and repair:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="VehiclemaintenanceandrepairRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Vehicle maintenance and repair'] === rating}
+                                                        onChange={() => handleCheckboxChange('Vehicle maintenance and repair', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Inventory management"
+                                                checked={selectedOptions['Inventory management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Inventory management', undefined)}
+                                            />
+                                            Inventory management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InventorymanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Inventory management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Inventory management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Logistics software utilization"
+                                                checked={selectedOptions['Logistics software utilization'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Logistics software utilization', undefined)}
+                                            />
+                                            Logistics software utilization:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="LogisticssoftwareutilizationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Logistics software utilization'] === rating}
+                                                        onChange={() => handleCheckboxChange('Logistics software utilization', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Regulatory compliance"
+                                                checked={selectedOptions['Regulatory compliance'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Regulatory compliance', undefined)}
+                                            />
+                                            Regulatory compliance:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="RegulatorycomplianceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Regulatory compliance'] === rating}
+                                                        onChange={() => handleCheckboxChange('Regulatory compliance', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Customer service"
+                                                checked={selectedOptions['Customer service'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Customer service', undefined)}
+                                            />
+                                            Customer service:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="CustomerserviceRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Customer service'] === rating}
+                                                        onChange={() => handleCheckboxChange('Customer service', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
@@ -2385,7 +4556,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the healthcare or allied sector? (1 being lowest, 5 being highest)</label>
-                            <div className="customSelect">
+                            {/* <div className="customSelect">
                                 <select value={userData['Scale']} required onChange={(e) => setUserData({ ...userData, "Scale": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Clinical diagnosis and treatment">Clinical diagnosis and treatment</option>
@@ -2398,6 +4569,244 @@ function SpecificQuestions() {
                                     <option value="Infection control and prevention">Infection control and prevention</option>
                                 </select>
                                 <span className="customArrow"></span>
+                            </div> */}
+                            <div className='checkbox'>
+                                <h3>Select options:</h3>
+                                <div className='checkboxContent'>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Clinical diagnosis and treatment"
+                                                checked={selectedOptions['Clinical diagnosis and treatment'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Clinical diagnosis and treatment', undefined)}
+                                            />
+                                            Clinical diagnosis and treatment:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        type="radio"
+                                                        name="ClinicaldiagnosisandtreatmentRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Clinical diagnosis and treatment'] === rating}
+                                                        onChange={() => handleCheckboxChange('Clinical diagnosis and treatment', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Patient care and bedside manner"
+                                                checked={selectedOptions['Patient care and bedside manner'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Patient care and bedside manner', undefined)}
+                                            />
+                                            Patient care and bedside manner:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="PatientcareandbedsidemannerRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Patient care and bedside manner'] === rating}
+                                                        onChange={() => handleCheckboxChange('Patient care and bedside manner', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Medication management and administration"
+                                                checked={selectedOptions['Medication management and administration'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Medication management and administration', undefined)}
+                                            />
+                                            Medication management and administration:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="MedicationmanagementandadministrationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Medication management and administration'] === rating}
+                                                        onChange={() => handleCheckboxChange('Medication management and administration', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Healthcare technology utilization"
+                                                checked={selectedOptions['Healthcare technology utilization'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Healthcare technology utilization', undefined)}
+                                            />
+                                            Healthcare technology utilization:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="HealthcaretechnologyutilizationRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Healthcare technology utilization'] === rating}
+                                                        onChange={() => handleCheckboxChange('Healthcare technology utilization', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Health education and promotion"
+                                                checked={selectedOptions['Health education and promotion'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Health education and promotion', undefined)}
+                                            />
+                                            Health education and promotion:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="HealtheducationandpromotionRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Health education and promotion'] === rating}
+                                                        onChange={() => handleCheckboxChange('Health education and promotion', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Healthcare administration and management"
+                                                checked={selectedOptions['Healthcare administration and management'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Healthcare administration and management', undefined)}
+                                            />
+                                            Healthcare administration and management:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="HealthcareadministrationandmanagementRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Healthcare administration and management'] === rating}
+                                                        onChange={() => handleCheckboxChange('Healthcare administration and management', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Research and evidence-based practice"
+                                                checked={selectedOptions['Research and evidence-based practice'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Research and evidence-based practice', undefined)}
+                                            />
+                                            Research and evidence-based practice:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="Researchandevidence-basedpracticeRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Research and evidence-based practice'] === rating}
+                                                        onChange={() => handleCheckboxChange('Research and evidence-based practice', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                    <label>
+                                        <div className="check">
+                                            <input
+                                                type="checkbox"
+                                                value="Infection control and prevention"
+                                                checked={selectedOptions['Infection control and prevention'] !== undefined}
+                                                onChange={() => handleCheckboxChange('Infection control and prevention', undefined)}
+                                            />
+                                            Infection control and prevention:
+                                        </div>
+                                        <div className="radioBtns">
+                                            {[1, 2, 3, 4, 5].map((rating) => (
+                                                <div key={rating}>
+                                                    <span>{rating}</span> {/* Display rating value */}
+                                                    <input
+                                                        key={rating}
+                                                        type="radio"
+                                                        name="InfectioncontrolandpreventionRating"
+                                                        value={rating}
+                                                        checked={selectedOptions['Infection control and prevention'] === rating}
+                                                        onChange={() => handleCheckboxChange('Infection control and prevention', rating)}
+                                                    />
+                                                    <span>{getRatingDescription(rating)}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </label>
+                                    <hr />
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div className='indiDetails'>
