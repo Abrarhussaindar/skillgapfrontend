@@ -86,7 +86,7 @@ function SpecificQuestions() {
 
                         <div className='indiDetails'>
                             <label>Which specific area(s) of the tourism sector are you involved in?</label>
-                            {/* <div className="customSelect">
+                            <div className="customSelect">
                                 <select value={userData['SpecificArea']} required onChange={(e) => setUserData({ ...userData, "SpecificArea": e.target.value })}>
                                     <option value="">Select Option</option>
                                     <option value="Hospitality (Hotels, Restaurants, etc.)">Hospitality (Hotels, Restaurants, etc.)</option>
@@ -95,10 +95,21 @@ function SpecificQuestions() {
                                     <option value="Cultural Tourism">Cultural Tourism</option>
                                     <option value="Eco-Tourism">Eco-Tourism</option>
                                     <option value="Travel Agency/Tour Operations">Travel Agency/Tour Operations</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
                                 </select>
                                 <span className="customArrow"></span>
-                            </div> */}
+                            </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the tourism sector? (1 being lowest, 5 being highest)</label>
@@ -316,7 +327,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in the tourism sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -332,10 +343,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in the tourism sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to the tourism sector?</label>
@@ -395,14 +417,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within the tourism sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in the tourism sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for the tourism sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -468,10 +501,21 @@ function SpecificQuestions() {
                                     <option value="Agroforestry">Agroforestry</option>
                                     <option value="Agricultural machinery operation and maintenance">Agricultural machinery operation and maintenance</option>
                                     <option value="Agricultural marketing and sales">Agricultural marketing and sales</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to agriculture or allied sectors? (1 being lowest, 5 being highest)</label>
@@ -760,7 +804,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in agriculture or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -777,10 +821,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in agriculture or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to agriculture or allied sectors?</label>
@@ -840,14 +895,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within agriculture or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in agriculture or allied sectors of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for agriculture or allied sectors in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -915,7 +981,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What are the key areas where you believe additional support and training are needed to enhance productivity and efficiency in agriculture and allied sectors?</label>
-                            <input type='text' value={userData['AddSuppTrain']} required onChange={(e) => setUserData({ ...userData, "AddSuppTrain": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['AddSuppTrain']} required onChange={(e) => setUserData({ ...userData, "AddSuppTrain": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Do you think there is a need for specialized training programs tailored to address the unique challenges faced by farmers and workers in the agriculture and allied sectors of Jammu & Kashmir UT?</label>
@@ -931,11 +997,11 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>How do you perceive the role of technological advancements (such as precision agriculture, drones, IoT, etc.) in addressing skill gaps and improving productivity in agriculture and allied sectors?</label>
-                            <input type='text' value={userData['RTA']} required onChange={(e) => setUserData({ ...userData, "RTA": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['RTA']} required onChange={(e) => setUserData({ ...userData, "RTA": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any cultural or social factors that influence participation in skill development programs within the agriculture and allied sectors? If yes, please elaborate.</label>
-                            <input type='text' value={userData['CultSocialFactors']} required onChange={(e) => setUserData({ ...userData, "CultSocialFactors": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CultSocialFactors']} required onChange={(e) => setUserData({ ...userData, "CultSocialFactors": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Do you believe there is adequate awareness among farmers and workers about the importance of skill development and training opportunities in the agriculture and allied sectors?</label>
@@ -951,11 +1017,11 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you think could be done to encourage more participation in skill development programs within the agriculture and allied sectors, particularly among marginalized or remote communities?</label>
-                            <input type='text' value={userData['MPSD']} required onChange={(e) => setUserData({ ...userData, "MPSD": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['MPSD']} required onChange={(e) => setUserData({ ...userData, "MPSD": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How do you envision the future of skill development in the agriculture and allied sectors of Jammu & Kashmir UT? Are there any innovative approaches or strategies that you believe should be adopted?</label>
-                            <input type='text' value={userData['FSDAAS']} required onChange={(e) => setUserData({ ...userData, "FSDAAS": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['FSDAAS']} required onChange={(e) => setUserData({ ...userData, "FSDAAS": e.target.value })} />
                         </div>
                     </>
                     : ""
@@ -996,11 +1062,22 @@ function SpecificQuestions() {
                                     <option value="Jewelry making">Jewelry making</option>
                                     <option value="Handloom weaving">Handloom weaving</option>
                                     <option value="Leatherwork">Leatherwork</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to handicraft or allied sectors? (1 being lowest, 5 being highest)</label>
@@ -1230,7 +1307,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in handicraft or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -1247,10 +1324,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in handicraft or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to handicraft or allied sectors?</label>
@@ -1310,14 +1398,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within handicraft or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in handicraft or allied sectors of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for handicraft or allied sectors in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -1359,11 +1458,11 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>If yes, how do you perceive the role of such cooperatives in skill development and market access?</label>
-                            <input type='text' value={userData['PerceiveRSC']} required onChange={(e) => setUserData({ ...userData, "PerceiveRSC": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['PerceiveRSC']} required onChange={(e) => setUserData({ ...userData, "PerceiveRSC": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think the integration of technology, such as e-commerce platforms and digital marketing, can address skill gaps and enhance market reach for artisans and craftsmen in Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['IOT']} required onChange={(e) => setUserData({ ...userData, "IOT": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['IOT']} required onChange={(e) => setUserData({ ...userData, "IOT": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any cultural or heritage preservation aspects associated with your craft that you feel are not adequately addressed in current skill development programs?</label>
@@ -1399,7 +1498,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What are the key barriers faced by artisans and craftsmen in accessing skill development programs, especially in rural or remote areas?</label>
-                            <input type='text' value={userData['KeyBarriers']} required onChange={(e) => setUserData({ ...userData, "KeyBarriers": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['KeyBarriers']} required onChange={(e) => setUserData({ ...userData, "KeyBarriers": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is to pass down traditional handicraft skills to younger generations?</label>
@@ -1417,7 +1516,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What suggestions do you have for improving the accessibility and effectiveness of skill development programs for artisans and craftsmen in Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SuggImprov']} required onChange={(e) => setUserData({ ...userData, "SuggImprov": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SuggImprov']} required onChange={(e) => setUserData({ ...userData, "SuggImprov": e.target.value })} />
                         </div>
                     </>
                     : ""
@@ -1456,11 +1555,22 @@ function SpecificQuestions() {
                                     <option value="Interior design">Interior design</option>
                                     <option value="Property management">Property management</option>
                                     <option value="Urban planning">Urban planning</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to construction, real estate, or allied sectors? (1 being lowest, 5 being highest)</label>
@@ -1683,7 +1793,7 @@ function SpecificQuestions() {
                                         </div>
                                     </label>
                                     <hr />
-                                    
+
 
                                     <label>
                                         <div className="check">
@@ -1721,7 +1831,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in construction, real estate, or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -1739,10 +1849,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in construction, real estate, or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to construction, real estate, or allied sectors?</label>
@@ -1802,14 +1923,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within construction, real estate, or allied sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in construction, real estate, or allied sectors of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for construction, real estate, or allied sectors in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -1868,7 +2000,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What role can industry partnerships and collaborations play in providing hands-on training and apprenticeship opportunities for individuals aspiring to work in the construction, real estate, and allied sectors?</label>
-                            <input type='text' value={userData['RoleIndudsPartnershipCollab']} required onChange={(e) => setUserData({ ...userData, "RoleIndudsPartnershipCollab": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['RoleIndudsPartnershipCollab']} required onChange={(e) => setUserData({ ...userData, "RoleIndudsPartnershipCollab": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific technological advancements (e.g., Building Information Modeling (BIM), Virtual Reality (VR), drones) that you believe are underutilized in the construction and real estate sectors in Jammu & Kashmir UT?</label>
@@ -1898,11 +2030,11 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any regulatory or bureaucratic hurdles that hinder skill development efforts in the construction, real estate, and allied sectors in Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['Regulations']} required onChange={(e) => setUserData({ ...userData, "Regulations": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Regulations']} required onChange={(e) => setUserData({ ...userData, "Regulations": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think the integration of digital platforms for project management and communication can improve efficiency and address skill gaps in the construction, real estate, and allied sectors?</label>
-                            <input type='text' value={userData['InteDigitalPlat']} required onChange={(e) => setUserData({ ...userData, "InteDigitalPlat": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['InteDigitalPlat']} required onChange={(e) => setUserData({ ...userData, "InteDigitalPlat": e.target.value })} />
                         </div>
 
                         <div className='indiDetails'>
@@ -1920,12 +2052,12 @@ function SpecificQuestions() {
 
                         <div className='indiDetails'>
                             <label>What initiatives do you think can be implemented to encourage more women to pursue careers in the construction, real estate, and allied sectors in Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Initiatives']} required onChange={(e) => setUserData({ ...userData, "Initiatives": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Initiatives']} required onChange={(e) => setUserData({ ...userData, "Initiatives": e.target.value })} />
                         </div>
 
                         <div className='indiDetails'>
                             <label>How do you envision the future of skill development in the construction, real estate, and allied sectors of Jammu & Kashmir UT, and what steps do you think should be taken to ensure a skilled workforce for the future?</label>
-                            <input type='text' value={userData['EnvisionFSD']} required onChange={(e) => setUserData({ ...userData, "EnvisionFSD": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['EnvisionFSD']} required onChange={(e) => setUserData({ ...userData, "EnvisionFSD": e.target.value })} />
                         </div>
                     </>
                     : ""
@@ -1964,11 +2096,22 @@ function SpecificQuestions() {
                                     <option value="Product development">Product development</option>
                                     <option value="Marketing and branding">Marketing and branding</option>
                                     <option value="Warehousing and logistics">Warehousing and logistics</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to retail or manufacturing sector? (1 being lowest, 5 being highest)</label>
@@ -2228,7 +2371,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in retail or manufacturing sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -2245,10 +2388,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in retail or manufacturing sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to retail or manufacturing sector?</label>
@@ -2308,14 +2462,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within retail or manufacturing sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in retail or manufacturing sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for retail or manufacturing sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -2358,7 +2523,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>How do you perceive the role of vocational education and apprenticeship programs in addressing skill gaps in the manufacturing sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['RoleVocEdu']} required onChange={(e) => setUserData({ ...userData, "RoleVocEdu": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['RoleVocEdu']} required onChange={(e) => setUserData({ ...userData, "RoleVocEdu": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific technical skills (e.g., machinery operation, equipment maintenance) that you believe are particularly important but lacking in the current workforce of the manufacturing sector?</label>
@@ -2374,32 +2539,32 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think the adoption of Industry 4.0 technologies (such as automation, Internet of Things, and artificial intelligence) can impact skill requirements in the manufacturing sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['AdoptionIT']} required onChange={(e) => setUserData({ ...userData, "AdoptionIT": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['AdoptionIT']} required onChange={(e) => setUserData({ ...userData, "AdoptionIT": e.target.value })} />
                         </div>
 
                         <div className='indiDetails'>
                             <label>Are there any cultural or social factors that influence participation in skill development programs within the retail and manufacturing sectors? If yes, please elaborate.</label>
-                            <input type='text' value={userData['CultSocailFactors']} required onChange={(e) => setUserData({ ...userData, "CultSocailFactors": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CultSocailFactors']} required onChange={(e) => setUserData({ ...userData, "CultSocailFactors": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How do you perceive the importance of soft skills (e.g., communication, teamwork, adaptability) in the retail and manufacturing sectors, and how can they be effectively integrated into skill development programs?</label>
-                            <input type='text' value={userData['ImportanceSoftSkills']} required onChange={(e) => setUserData({ ...userData, "ImportanceSoftSkills": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['ImportanceSoftSkills']} required onChange={(e) => setUserData({ ...userData, "ImportanceSoftSkills": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can private sector organizations play in supporting skill development initiatives within the retail and manufacturing sectors of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['PrivateSectorOrg']} required onChange={(e) => setUserData({ ...userData, "PrivateSectorOrg": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['PrivateSectorOrg']} required onChange={(e) => setUserData({ ...userData, "PrivateSectorOrg": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any opportunities for collaboration between educational institutions and industry stakeholders to address skill gaps in the retail and manufacturing sectors? If yes, please provide examples.</label>
-                            <input type='text' value={userData['CollabEduInsti']} required onChange={(e) => setUserData({ ...userData, "CollabEduInsti": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CollabEduInsti']} required onChange={(e) => setUserData({ ...userData, "CollabEduInsti": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What measures do you think can be implemented to encourage lifelong learning and continuous skill development among employees in the retail and manufacturing sectors?</label>
-                            <input type='text' value={userData['MeasuresImplement']} required onChange={(e) => setUserData({ ...userData, "MeasuresImplement": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['MeasuresImplement']} required onChange={(e) => setUserData({ ...userData, "MeasuresImplement": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How do you envision the future workforce in the retail and manufacturing sectors of Jammu & Kashmir UT, and what steps should be taken to prepare for upcoming skill requirements and challenges?</label>
-                            <input type='text' value={userData['EnvisionFutureWorkForce']} required onChange={(e) => setUserData({ ...userData, "EnvisionFutureWorkForce": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['EnvisionFutureWorkForce']} required onChange={(e) => setUserData({ ...userData, "EnvisionFutureWorkForce": e.target.value })} />
                         </div>
                     </>
                     : ""
@@ -2439,11 +2604,22 @@ function SpecificQuestions() {
                                     <option value="Insurance underwriting">Insurance underwriting</option>
                                     <option value="Actuarial services">Actuarial services</option>
                                     <option value="Financial technology (Fintech)">Financial technology (Fintech)</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the banking, finance, or insurance sector? (1 being lowest, 5 being highest)</label>
@@ -2703,7 +2879,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in the banking, finance, or insurance sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -2720,10 +2896,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in the banking, finance, or insurance sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to handicraft or allied sectors?</label>
@@ -2783,14 +2970,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within the banking, finance, or insurance sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in the banking, finance, or insurance sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for the banking, finance, or insurance sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -2856,11 +3054,22 @@ function SpecificQuestions() {
                                     <option value="Cloud computing">Cloud computing</option>
                                     <option value="Artificial Intelligence (AI) and Machine Learning (ML)">Artificial Intelligence (AI) and Machine Learning (ML)</option>
                                     <option value="Digital marketing">Digital marketing</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the IT or allied sector? (1 being lowest, 5 being highest)</label>
@@ -3148,7 +3357,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in the IT or allied sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -3165,10 +3374,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in the IT or allied sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to the IT or allied sector?</label>
@@ -3228,14 +3448,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within the IT or allied sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in the IT or allied sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for the IT or allied sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -3300,11 +3531,22 @@ function SpecificQuestions() {
                                     <option value="Marketing and sales">Marketing and sales</option>
                                     <option value="E-commerce">E-commerce</option>
                                     <option value="International trade">International trade</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the trade or commerce sector? (1 being lowest, 5 being highest)</label>
@@ -3564,7 +3806,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in the trade or commerce sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -3581,10 +3823,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in the trade or commerce sectorof Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to the trade or commerce sector?</label>
@@ -3644,14 +3897,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within the trade or commerce sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in the trade or commerce sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for the trade or commerce sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -3717,11 +3981,22 @@ function SpecificQuestions() {
                                     <option value="Adult education">Adult education</option>
                                     <option value="Vocational training">Vocational training</option>
                                     <option value="Special education">Special education</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the training or education sector? (1 being lowest, 5 being highest)</label>
@@ -3980,7 +4255,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in the training or education sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -3997,10 +4272,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in the training or education sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to handicraft or allied sectors?</label>
@@ -4060,14 +4346,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within the training or education sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in the training or education sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for the training or education sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -4132,11 +4429,22 @@ function SpecificQuestions() {
                                     <option value="Fleet management">Fleet management</option>
                                     <option value="Customs clearance and documentation">Customs clearance and documentation</option>
                                     <option value="Last-mile delivery">Last-mile delivery</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the transport or logistics sector? (1 being lowest, 5 being highest)</label>
@@ -4395,7 +4703,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in the transport or logistics sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -4412,10 +4720,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in the transport or logistics sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to the transport or logistics sector?</label>
@@ -4475,14 +4794,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within the transport or logistics sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in the transport or logistics sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for the transport or logistics sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>
@@ -4548,11 +4878,22 @@ function SpecificQuestions() {
                                     <option value="Healthcare administration/management">Healthcare administration/management</option>
                                     <option value="Public health">Public health</option>
                                     <option value="Healthcare informatics">Healthcare informatics</option>
-                                    <option value="Others">Others (please specify)</option>
+                                    <option value="Other">Others (please specify)</option>
 
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.SpecificArea === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherSpecificArea']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificArea": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>On a scale of 1 to 5, how would you rate your proficiency in the following skills relevant to the healthcare or allied sector? (1 being lowest, 5 being highest)</label>
@@ -4811,7 +5152,7 @@ function SpecificQuestions() {
                         </div>
                         <div className='indiDetails'>
                             <label>What do you perceive as the most critical skill gap(s) in the healthcare or allied sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['CriticalSkillGap']} required onChange={(e) => setUserData({ ...userData, "CriticalSkillGap": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>What factors do you think contribute to these skill gaps?</label>
@@ -4828,10 +5169,21 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.Factors === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherFactors']} required onChange={(e) => setUserData({ ...userData, "OtherFactors": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>How do you think skill development initiatives can be improved in the healthcare or allied sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SDI']} required onChange={(e) => setUserData({ ...userData, "SDI": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Have you undergone any formal training or certification programs related to the healthcare or allied sector?</label>
@@ -4891,14 +5243,25 @@ function SpecificQuestions() {
                                 </select>
                                 <span className="customArrow"></span>
                             </div>
+                            {
+                                userData.StayUpdated === "Other"
+                                    ?
+                                    <div className='other'>
+                                        <h5>
+                                            Specify:
+                                        </h5>
+                                        <input type="text" value={userData['OtherStayUpdated']} required onChange={(e) => setUserData({ ...userData, "OtherStayUpdated": e.target.value })} name="name" id="name" />
+                                    </div>
+                                    : ""
+                            }
                         </div>
                         <div className='indiDetails'>
                             <label>In your opinion, what role can the government play in bridging the skill gaps within the healthcare or allied sector of Jammu & Kashmir UT?</label>
-                            <input type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['Opinion']} required onChange={(e) => setUserData({ ...userData, "Opinion": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>Are there any specific challenges or obstacles that hinder skill development efforts in the healthcare or allied sector of Jammu & Kashmir UT? If yes, please elaborate.</label>
-                            <input type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
+                            <textarea rows={8} type='text' value={userData['SpecificChal']} required onChange={(e) => setUserData({ ...userData, "SpecificChal": e.target.value })} />
                         </div>
                         <div className='indiDetails'>
                             <label>How important do you think it is for the healthcare or allied sector in Jammu & Kashmir UT to prioritize skill development initiatives?</label>

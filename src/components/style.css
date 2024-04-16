@@ -132,7 +132,7 @@
   font-weight: 500;
 }
 .Container main form .mainForm .indiDetails input {
-  width: 80%;
+  width: 96%;
   height: 30px;
   padding: 5px;
   border-radius: 5px;
@@ -141,6 +141,15 @@
   outline: none;
   font-size: 16px;
   padding-left: 10px;
+  background-color: white;
+}
+.Container main form .mainForm .indiDetails textarea {
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
   background-color: white;
 }
 .Container main form .mainForm .indiDetails select {

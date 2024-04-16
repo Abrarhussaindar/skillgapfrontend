@@ -47,11 +47,25 @@ function FirstForm() {
                         <option value="Manufacturing/Production">Manufacturing/Production</option>
                         <option value="Hospitality/Tourism">Hospitality/Tourism</option>
                         <option value="Agriculture/Farming">Agriculture/Farming</option>
-                        <option value="Other (please specify)">Other (please specify)</option>
+                        <option value="Other">Other (please specify)</option>
                     </select>
                     <span className="customArrow"></span>
                 </div>
+                {
+                    userData.Occupation === "Other"
+                        ?
+                        <div className='other'>
+                            <h5>
+                                Specify:
+                            </h5>
+                            <input type="text" value={userData['OtherOccupation']} required onChange={(e) => setUserData({ ...userData, "OtherOccupation": e.target.value })} name="name" id="name" />
+                        </div>
+                        : ""
+                }
             </div>
+
+
+
             <div className='indiDetails'>
                 <label>How would you rate your current skill level in your field of work?</label>
                 <div className="customSelect">
@@ -83,6 +97,17 @@ function FirstForm() {
                     </select>
                     <span className="customArrow"></span>
                 </div>
+                {
+                    userData.CrucialSkill === "Other"
+                        ?
+                        <div className='other'>
+                            <h5>
+                                Specify:
+                            </h5>
+                            <input type="text" value={userData['OtherCrucialSkill']} required onChange={(e) => setUserData({ ...userData, "OtherCrucialSkill": e.target.value })} name="name" id="name" />
+                        </div>
+                        : ""
+                }
             </div>
             <div className='indiDetails'>
                 <label>How often do you participate in training or professional development activities to enhance your skills?</label>
@@ -125,6 +150,17 @@ function FirstForm() {
                     </select>
                     <span className="customArrow"></span>
                 </div>
+                {
+                    userData.SpecificSkills === "Other"
+                        ?
+                        <div className='other'>
+                            <h5>
+                                Specify:
+                            </h5>
+                            <input type="text" value={userData['OtherSpecificSkills']} required onChange={(e) => setUserData({ ...userData, "OtherSpecificSkills": e.target.value })} name="name" id="name" />
+                        </div>
+                        : ""
+                }
             </div>
             <div className='indiDetails'>
                 <label>Are there any barriers preventing you from acquiring the necessary skills for your job role?</label>
@@ -139,6 +175,17 @@ function FirstForm() {
                     </select>
                     <span className="customArrow"></span>
                 </div>
+                {
+                    userData.NecessaySkills === "Other"
+                        ?
+                        <div className='other'>
+                            <h5>
+                                Specify:
+                            </h5>
+                            <input type="text" value={userData['OtherNecessaySkills']} required onChange={(e) => setUserData({ ...userData, "OtherNecessaySkills": e.target.value })} name="name" id="name" />
+                        </div>
+                        : ""
+                }
             </div>
             <div className='indiDetails'>
                 <label>Do you think educational/training institutes are training as per current or emerging market demand/needs?</label>
@@ -195,6 +242,17 @@ function FirstForm() {
                     </select>
                     <span className="customArrow"></span>
                 </div>
+                {
+                    userData.GovSupportSkillDev === "Other"
+                        ?
+                        <div className='other'>
+                            <h5>
+                                Specify:
+                            </h5>
+                            <input type="text" value={userData['OtherGovSupportSkillDev']} required onChange={(e) => setUserData({ ...userData, "OtherGovSupportSkillDev": e.target.value })} name="name" id="name" />
+                        </div>
+                        : ""
+                }
             </div>
         </div>
     );
